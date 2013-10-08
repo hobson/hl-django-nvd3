@@ -1,1 +1,1 @@
--e git://github.com/hobsonlane/python-nvd3.git@master#egg=python-nvd3
+-e git+git@github.com:hobsonlane/python-nvd3.git@master#egg=python_nvd3-master
