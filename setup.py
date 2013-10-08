@@ -10,6 +10,10 @@ requirements = list(parse_requirements('requirements.txt'))
 install_requires=[str(line.req) for line in requirements]
 dependency_links=[str(line.url) for line in requirements]
 
+print 'locals'
+print locals()
+print 'globals'
+print globals()
 print install_requires
 print dependency_links
 
@@ -27,7 +31,7 @@ setup(
     packages=find_packages(exclude=["tests", "demoproject", "docs"]),
     include_package_data=True,
     package_data={},
-    install_requires=[str(line.req) for line in requirements if line.req],
+    install_requires=[str(line.req) for line in requirements if line.req and not line.url],
     dependency_links=[str(line.url) for line in requirements if line.url],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
