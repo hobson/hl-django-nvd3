@@ -32,7 +32,7 @@ def parse_dependency_links(file_name):
 
 
 setup(
-    name='hl-django-nvd3',
+    name='django-nvd3',
     version=django_nvd3.__version__,
     description="Hobson Lane's Django NVD3 Fork -- Template tags for hl-python-nvd3 package",
     long_description=read('README.rst'),
