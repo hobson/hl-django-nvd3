@@ -7,6 +7,11 @@ def read(*parts):
     return open(os.path.join(os.path.dirname(__file__), *parts)).read()
 
 requirements = parse_requirements('requirements.txt')
+install_requires=[str(line.req) for line in requirements]
+dependency_links=[str(line.url) for line in requirements]
+
+print install_requires
+print dependency_links
 
 setup(
     name='hl-django-nvd3',
