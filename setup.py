@@ -6,7 +6,7 @@ from pip.req import parse_requirements
 def read(*parts):
     return open(os.path.join(os.path.dirname(__file__), *parts)).read()
 
-requirements = parse_requirements('requirements.txt')
+requirements = list(parse_requirements('requirements.txt'))
 install_requires=[str(line.req) for line in requirements]
 dependency_links=[str(line.url) for line in requirements]
 
@@ -27,8 +27,8 @@ setup(
     packages=find_packages(exclude=["tests", "demoproject", "docs"]),
     include_package_data=True,
     package_data={},
-    install_requires=[str(line.req) for line in requirements],
-    dependency_links=[str(line.url) for line in requirements],
+    install_requires=[str(line.req) for line in requirements if line.req],
+    dependency_links=[str(line.url) for line in requirements if line.url],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
