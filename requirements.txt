@@ -1,1 +1,1 @@
--e git+git@github.com:hobsonlane/django-nvd3.git@master#egg=hl-django-nvd3
+-e git://github.com/hobsonlane/python-nvd3.git@master#egg=python-nvd3
