@@ -10,12 +10,13 @@ requirements = list(parse_requirements('requirements.txt'))
 install_requires=[str(line.req) for line in requirements]
 dependency_links=[str(line.url) for line in requirements]
 
-print 'locals'
-print locals()
-print 'globals'
-print globals()
-print install_requires
-print dependency_links
+# print 'locals'
+# print locals()
+# print 'globals'
+# print globals()
+# ^-- no clue about verbosity level (-v command-line option for pip) in globals and locals so can't print the debug info below 
+# print install_requires
+# print dependency_links
 
 setup(
     name='hl-django-nvd3',
