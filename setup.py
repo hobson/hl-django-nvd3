@@ -32,14 +32,14 @@ def parse_dependency_links(file_name):
 
 
 setup(
-    name='django-nvd3',
+    name='hl-django-nvd3',
     version=django_nvd3.__version__,
-    description="Django NVD3",
+    description="Hobson Lane's Django NVD3 Fork -- Template tags for hl-python-nvd3 package",
     long_description=read('README.rst'),
     keywords='django, nvd3, chart, graph, d3',
-    url='http://github.com/areski/django-nvd3',
+    url='http://github.com/hobsonlane/django-nvd3',
     author='Belaid Arezqui',
-    author_email='areski@gmail.com',
+    author_email='hosbonlane@gmail.com',
     license='MIT License',
     zip_safe=False,
     packages=find_packages(exclude=["tests", "demoproject", "docs"]),
