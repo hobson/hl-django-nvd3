@@ -9,7 +9,7 @@ from nvd3 import lineWithFocusChart, lineChart, \
 
 
 @register.simple_tag(name='load_chart')
-def load_chart(chart_type, series, container, kw_extra, *args, **kwargs):
+def load_chart(chart_type, series, container, kw_extra=None, *args, **kwargs):
     """Loads the Chart objects in the container.
 
     **usage**:
@@ -28,6 +28,9 @@ def load_chart(chart_type, series, container, kw_extra, *args, **kwargs):
         * ``tag_script_js`` - if show the javascript tag <script>
         * ``color_category`` - Define color category (eg. category10, category20, category20c)
     """
+    if kw_extra is None:
+        kw_extra = {}
+    
     if not chart_type:
         return False
 
