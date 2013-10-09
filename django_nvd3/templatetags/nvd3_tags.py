@@ -9,7 +9,7 @@ from nvd3 import lineWithFocusChart, lineChart, \
 
 
 @register.simple_tag(name='load_chart')
-def load_chart(chart_type, series, container, x_is_date=False, x_axis_format="%d %b %Y", tag_script_js=True, color_category='category20', *args, **kwargs):
+def load_chart(chart_type, series, container, kw_extra, *args, **kwargs):
     """Loads the Chart objects in the container.
 
     **usage**:
@@ -21,6 +21,8 @@ def load_chart(chart_type, series, container, x_is_date=False, x_axis_format="%d
         * ``chart_type`` - Give chart type name eg. lineWithFocusChart/pieChart
         * ``series`` - Data set which are going to be plotted in chart.
         * ``container`` - Chart holder in html page.
+
+    **kw_extra settings**::
         * ``x_is_date`` - if x-axis is in date format
         * ``x_axis_format`` - display x-axis date in various format ie "%d %b %Y"
         * ``tag_script_js`` - if show the javascript tag <script>
@@ -28,10 +30,21 @@ def load_chart(chart_type, series, container, x_is_date=False, x_axis_format="%d
     """
     if not chart_type:
         return False
-    chart = eval(chart_type)(name=container, date=x_is_date, x_axis_format=x_axis_format, color_category=color_category, resize=True, *args, **kwargs)
-    #don't show the javascript tag <script>
-    if not tag_script_js:
-        chart.tag_script_js = False
+
+    if not 'x_is_date' in kw_extra:
+        kw_extra['x_is_date'] = False
+    if not 'x_axis_format' in kw_extra:
+        kw_extra['x_axis_format'] = "%d %b %Y"
+    if not 'color_category' in kw_extra:
+        kw_extra['color_category'] = "category20"
+    if not 'tag_script_js' in kw_extra:
+        kw_extra['tag_script_js'] = True
+    # set the container name
+    kw_extra['name'] = container
+
+    # Build chart
+    chart = eval(chart_type)(**kw_extra)
+
     xdata = series['x']
     y_axis_list = [d for d in series.keys() if 'y' in d]
 
@@ -80,7 +93,8 @@ def include_container(include_container, height=400, width=600):
         * ``height`` - Chart height
         * ``width`` - Chart width
     """
-    chart = NVD3Chart(include_container)
+    chart = NVD3Chart()
+    chart.name = include_container
     chart.set_graph_height(height)
     chart.set_graph_width(width)
     chart.buildcontainer()
