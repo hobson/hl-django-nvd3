@@ -7,7 +7,7 @@ def read(*parts):
     return open(os.path.join(os.path.dirname(__file__), *parts)).read()
 
 requirements = list(parse_requirements('requirements.txt'))
-install_requires=[str(line.req) for line in requirements if line.req and not line.url]
+install_requires=[str(line.req) for line in requirements if line.req]
 dependency_links=[str(line.url) for line in requirements if line.url]
 
 # print 'locals'
