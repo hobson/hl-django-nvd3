@@ -7,16 +7,16 @@ def read(*parts):
     return open(os.path.join(os.path.dirname(__file__), *parts)).read()
 
 requirements = list(parse_requirements('requirements.txt'))
-install_requires=[str(line.req) for line in requirements]
-dependency_links=[str(line.url) for line in requirements]
+install_requires=[str(line.req) for line in requirements if line.req and not line.url]
+dependency_links=[str(line.url) for line in requirements if line.url]
 
 # print 'locals'
 # print locals()
 # print 'globals'
 # print globals()
-# ^-- no clue about verbosity level (-v command-line option for pip) in globals and locals so can't print the debug info below 
-# print install_requires
-# print dependency_links
+# globals and locals -^ above give no clue about verbosity level (-v command-line option for pip) so don't know when to print the debug info below 
+print 'install_requires:', install_requires
+print 'dependency_links:', dependency_links
 
 setup(
     name='hl-django-nvd3',
@@ -32,8 +32,8 @@ setup(
     packages=find_packages(exclude=["tests", "demoproject", "docs"]),
     include_package_data=True,
     package_data={},
-    install_requires=[str(line.req) for line in requirements if line.req and not line.url],
-    dependency_links=[str(line.url) for line in requirements if line.url],
+    install_requires=install_requires,
+    dependency_links=dependency_links,
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Web Environment',
