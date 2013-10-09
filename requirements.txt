@@ -1,2 +1,1 @@
--e git+git://github.com/hobsonlane/hl-python-nvd3.git#egg=hl-python-nvd3
-
+-e git+git://github.com/hobsonlane/hl-python-nvd3.git@master#egg=hl-python-nvd3-0.11.0

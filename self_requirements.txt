@@ -1,4 +1,4 @@
 # these are the lines to put in your requirements.txt file for any project that depends on hl-django-nvd3
 #-e git+git://github.com/hobsonlane/hl-python-nvd3.git#egg=hl-python-nvd3
--e git+git://github.com/hobsonlane/hl-django-nvd3.git#egg=hl-django-nvd3
+-e git+git://github.com/hobsonlane/hl-django-nvd3.git@master#egg=hl-django-nvd3-0.5.0
 # Django==1.5
