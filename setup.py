@@ -7,7 +7,7 @@ def read(*parts):
     return open(os.path.join(os.path.dirname(__file__), *parts)).read()
 
 requirements = list(parse_requirements('requirements.txt'))
-install_requires=[(str(line.req) + '>=' + str(line.ver)) for line in requirements if line.req and not line.url]  # `and not line.url` will cause it not to download and install, pehaps doing `lin.req + '>=' + lin.ver` would to the trick
+install_requires=[(str(line.req) + '>=' + str(line.ver)) for line in requirements if line.req]  # `and not line.url` will cause it not to download and install, pehaps doing `lin.req + '>=' + lin.ver` would to the trick
 dependency_links=[str(line.url) for line in requirements if line.url]
 
 # print 'locals'
